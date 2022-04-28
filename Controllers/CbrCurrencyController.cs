@@ -32,17 +32,17 @@ namespace WebApiCurrency.Controllers
 
         [HttpGet]
         [ActionName("currencies")]
-        public async Task<IEnumerable<Valute>> Currencies([FromQuery] CurrencyPageParameters @params)
+        public async Task<ActionResult<IEnumerable<Valute>>> Currencies([FromQuery] CurrencyPageParameters @params)
         {
             if (@params.PageSize < 0)
-                return Enumerable.Empty<Valute>();
+                return BadRequest();
 
             var data = (await _currency.GetCurrencies()).Skip((@params.PageNumber - 1) * @params.PageSize).Take(@params.PageSize);
 
-            if(data.Count() == 0)
-                return Enumerable.Empty<Valute>();
+            if (data.Count() == 0)
+                return BadRequest();
 
-            return data;
+            return Ok(data);
         }
     }
 }
