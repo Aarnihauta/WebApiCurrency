@@ -26,7 +26,14 @@ namespace WebApiCurrency.Controllers
         [ActionName("currencies")]
         public async Task<IEnumerable<Valute>> Currencies([FromQuery] CurrencyPageParameters @params)
         {
+            if (@params.PageSize < 0)
+                return Enumerable.Empty<Valute>();
+
             var data = (await _currency.GetCurrencies()).Skip((@params.PageNumber - 1) * @params.PageSize).Take(@params.PageSize);
+
+            if(data.Count() == 0)
+                return Enumerable.Empty<Valute>();
+
             return data;
         }
     }
