@@ -40,7 +40,7 @@ namespace WebApiCurrency.Controllers
             var data = (await _currency.GetCurrencies()).Skip((@params.PageNumber - 1) * @params.PageSize).Take(@params.PageSize);
 
             if (data.Count() == 0)
-                return BadRequest();
+                return NotFound();
 
             return Ok(data);
         }
