@@ -21,9 +21,12 @@ builder.Services.AddHttpClient("currencyClient", c =>
 builder.Services.AddControllers();
 builder.Services.AddTransient<ICurrentCurrency, CurrentCurrency>();
 
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+app.UseHsts();
+
 app.MapControllers();
 
 app.UseRouting();
