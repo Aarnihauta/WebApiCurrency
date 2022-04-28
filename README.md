@@ -9,4 +9,4 @@
 1. Для получения списка необходимо передать обязательные параметры: `pageNumber` - номер страницы, и `pageSize` - размер страницы (количество элементов за запрос, максимум - 5)
 2. Для получения одного элемента необходимо передать обязательный параметр `id`
 
-Использовать можно как в браузере с помощью адресной строки: `localhost:xxx/currency?id=xxx`, или `localhost:xxx/currencies?pageSize=x&pageNumber=x`
+Использовать можно как в браузере с помощью адресной строки: `localhost:xxx/currency?id=xxx`, или `localhost:xxx/currencies?pageSize=x&pageNumber=x` или же десктопным postman
